@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'resolve.user' => \App\Http\Middleware\ResolveSanctumUser::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
